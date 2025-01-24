@@ -1,5 +1,7 @@
+package main;
 
 import java.util.*;
+
 import models.Contacto;
 import utils.ContactoComparator;
 

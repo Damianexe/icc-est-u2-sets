@@ -1,15 +1,14 @@
 package models;
 
-public class Contacto {
+import java.util.Objects;
 
+public class Contacto {
     private String nombre;
     private String apellido;
-    private String telefono;
 
-    public Contacto(String nombre, String apellido, String telefono) {
+    public Contacto(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
     }
 
     public String getNombre() {
@@ -20,16 +19,21 @@ public class Contacto {
         return apellido;
     }
 
-    public String getTelefono() {
-        return telefono;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contacto contacto = (Contacto) o;
+        return nombre.equals(contacto.nombre) && apellido.equals(contacto.apellido);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, apellido);
     }
 
     @Override
     public String toString() {
-        return "Contacto{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                '}';
+        return apellido + ", " + nombre;
     }
-   
 }

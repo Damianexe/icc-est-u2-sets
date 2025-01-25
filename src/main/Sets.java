@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
-public class Sets {
+/*public class Sets {
 
     public Set<String> construirHashSet() {
         Set<String> miHashSet = new HashSet<>();
@@ -65,3 +65,4 @@ public class Sets {
         return miTreeSetConComparator;
     }
 }
+*/

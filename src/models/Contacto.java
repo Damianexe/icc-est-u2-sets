@@ -1,14 +1,14 @@
 package models;
 
-import java.util.Objects;
-
 public class Contacto {
     private String nombre;
     private String apellido;
+    private String telefono;
 
-    public Contacto(String nombre, String apellido) {
+    public Contacto(String nombre, String apellido, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.telefono = telefono;
     }
 
     public String getNombre() {
@@ -19,21 +19,42 @@ public class Contacto {
         return apellido;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Contacto contacto = (Contacto) o;
-        return nombre.equals(contacto.nombre) && apellido.equals(contacto.apellido);
+    public String getTelefono() {
+        return telefono;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, apellido);
-    }
-
+    // Opcional: puedes sobreescribir toString() para imprimir el contacto de forma
+    // amigable
     @Override
     public String toString() {
-        return apellido + ", " + nombre;
+        return nombre + " " + apellido + " - " + telefono + " - ";
     }
+
+    // Opcional: sobreescribir equals() y hashCode() para definir cuándo dos
+    // Contacto son iguales
+
+    // En este caso, podríamos definir que dos Contacto son iguales si tienen el
+    // mismo nombre y apellido.
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) // referencias de memoria
+            return true;
+        if (obj == null) // obj es null
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Contacto other = (Contacto) obj;
+        return nombre.equals(other.nombre)
+                && apellido.equals(other.apellido);
+    }
+
+    
+    @Override
+    public int hashCode() {
+    // Por simplicidad, combinamos los hash de nombre y apellido
+        return nombre.hashCode() + apellido.hashCode();
+    }
+    
 }
